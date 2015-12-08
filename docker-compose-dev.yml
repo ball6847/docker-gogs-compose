@@ -1,0 +1,19 @@
+gogs:
+  image: "gogs/gogs:0.7.33"
+  container_name: "gogs"
+  ports:
+    - "10022:22"
+    - "10080:3000"
+  volumes:
+    - "./data/gogs:/data"
+  links:
+    - "postgresql:postgresql"
+postgresql:
+  image: "infoslack/alpine-postgres"
+  container_name: "gogs-postgresql"
+  volumes:
+    - "./data/postgresql:/var/lib/postgresql"
+  environment:
+    - "POSTGRES_DB=gogs"
+    - "POSTGRES_USER=gogs"
+    - "POSTGRES_PASSWORD=changethis123"
