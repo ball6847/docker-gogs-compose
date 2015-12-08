@@ -6,9 +6,13 @@ gogs:
   volumes:
     - "./data/gogs:/data"
   links:
-    - "gogs-postgresql:postgresql"
+    - "postgresql:postgresql"
 postgresql:
   image: "infoslack/alpine-postgres"
   container_name: "gogs-postgresql"
   volumes:
     - "./data/postgresql:/var/lib/postgresql"
+  environment:
+    - "POSTGRES_DB=gogs"
+    - "POSTGRES_USER=gogs"
+    - "POSTGRES_PASSWORD=changethis123"
