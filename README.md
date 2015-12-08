@@ -17,5 +17,5 @@ docker-compose up -d
 `docker-compose-dev.yml` is also available as alternative setup for development or testing purpose, which bind on port 10022 and 10080 for ssh and gogs itself.
 
 ```
-docker-compose up -d -f docker-compose-dev.yml
+docker-compose -f docker-compose-dev.yml up -d
 ```
