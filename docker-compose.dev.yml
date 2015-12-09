@@ -6,14 +6,16 @@ gogs:
     - "10080:3000"
   volumes:
     - "./data/gogs:/data"
+    - "./entrypoint.sh:/entrypoint.sh"
   links:
     - "postgresql:postgresql"
+  entrypoint: "/entrypoint.sh"
 postgresql:
-  image: "infoslack/alpine-postgres"
+  image: "sameersbn/postgresql:9.4-8"
   container_name: "gogs-postgresql"
   volumes:
     - "./data/postgresql:/var/lib/postgresql"
   environment:
-    - "POSTGRES_DB=gogs"
-    - "POSTGRES_USER=gogs"
-    - "POSTGRES_PASSWORD=changethis123"
+    - "DB_USER=gogs"
+    - "DB_PASS=changethis123"
+    - "DB_NAME=gogs"
